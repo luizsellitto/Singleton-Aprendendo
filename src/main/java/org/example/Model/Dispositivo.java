@@ -29,6 +29,13 @@ public class Dispositivo {
         return nome;
     }
 
+    public boolean isLigado() {
+        if (status == 1) {
+            return true;
+        }
+        return false;
+    }
+
     public int getStatus() {
         return status;
     }
@@ -41,7 +48,15 @@ public class Dispositivo {
         this.nome = nome;
     }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
