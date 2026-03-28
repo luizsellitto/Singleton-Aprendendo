@@ -1,15 +1,14 @@
 package org.example.Model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Central {
 
     private static Central instance;
-    private List<Dispositivo> dispositivos;
+    private Map<Integer, Dispositivo> dispositivos;
 
     private Central() {
-        dispositivos = new ArrayList<>();
+        dispositivos = new HashMap<>();
     }
 
     public static Central getInstance() {
@@ -19,16 +18,20 @@ public class Central {
         return instance;
     }
 
-    public void addDispositivo(Dispositivo dispositivo) {
-        dispositivos.add(dispositivo);
+    public void addDispositivo(Dispositivo d) {
+        dispositivos.put(d.getId(), d);
     }
 
-    public void removeDispositivo(Dispositivo dispositivo) {
-        dispositivos.remove(dispositivo);
+    public void removeDispositivo(int id) {
+        dispositivos.remove(id);
+    }
+
+    public Dispositivo getById(int id) {
+        return dispositivos.get(id);
     }
 
     public Dispositivo getByNome(String nome) {
-        for (Dispositivo dispositivo : dispositivos) {
+        for (Dispositivo dispositivo : dispositivos.values()) {
             if (dispositivo.getNome().equals(nome)) {
                 return dispositivo;
             }
@@ -36,7 +39,7 @@ public class Central {
         return null;
     }
 
-    public List<Dispositivo> getDispositivos() {
-        return dispositivos;
+    public Collection<Dispositivo> getDispositivos() {
+        return dispositivos.values();
     }
 }
