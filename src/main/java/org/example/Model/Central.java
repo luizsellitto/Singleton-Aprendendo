@@ -40,6 +40,7 @@ public class Central {
 
     public void atualizar(Dispositivo d) throws Exception {
         dao.update(d);
+        dispositivos.put(d.getId(), d);
     }
 
     public void remover(int id) throws Exception {
