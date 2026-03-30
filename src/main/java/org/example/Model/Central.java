@@ -20,7 +20,7 @@ public class Central {
         carregarDoBanco();
     }
 
-    public static Central getInstance() throws Exception {
+    public static synchronized Central getInstance() throws Exception {
         if (instance == null) {
             instance = new Central();
         }
